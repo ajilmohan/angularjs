@@ -1,5 +1,5 @@
 'use strict';
-app.controller('placesExplorerController', function ($scope, placesExplorerService, placesPhotosService, $filter,$modal) {
+app.controller('placesExplorerController', function ($scope, placesExplorerService, placesPhotosService, placesDataService , $filter,$modal) {
 
     $scope.exploreNearby = "New York";
     $scope.exploreQuery = "";
@@ -99,4 +99,31 @@ app.controller('placesExplorerController', function ($scope, placesExplorerServi
      
         });
     };
+    
+    $scope.bookmarkPlace = function (venue) {
+    	 
+        if (!placesDataService.getUserInContext()) {
+     
+            var modalInstance = $modal.open({
+                templateUrl: 'app/views/userprofile.html',
+                controller: 'userContextController',
+                resolve: {
+                    venue: function () {
+                        return venue;
+                    }
+                }
+            });
+        }
+        else {
+            placesDataService.savePlace(venue).then(
+            function (results) {
+                // Do nothing as toaster showing from service
+            },
+            function (results) {
+                // Do nothing as toaster showing from service
+            });
+        }
+     
+    };
+    
 });

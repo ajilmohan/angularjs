@@ -60,8 +60,12 @@
 <!-- Load controllers -->
 <script type="text/javascript" src="app/controllers/placesExplorerController.js"></script>
 <script type="text/javascript" src="app/controllers/placesPhotosController.js"></script>
+<script type="text/javascript" src="app/controllers/userContextController.js"></script>
+<script type="text/javascript" src="app/controllers/myPlacesController.js"></script>
+
 <!-- Load services -->
 <script type="text/javascript" src="app/services/placesExplorerService.js"></script>
 <script type="text/javascript" src="app/services/placesPhotosService.js"></script>
+<script type="text/javascript" src="app/services/placesDataService.js"></script>
 <!-- Load filters -->
 <script type="text/javascript" src="app/filters/placeNameCategoryFilter.js"></script>
