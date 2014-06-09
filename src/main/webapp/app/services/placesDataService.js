@@ -1,7 +1,7 @@
 'use strict';
 app.factory('placesDataService', function ($http, toaster) {
  
-    var serviceBase = '/api/places/';
+    var serviceBase = 'api/places/';
     var placesDataFactory = {};
     var userInContext = null;
  
@@ -42,7 +42,8 @@ app.factory('placesDataService', function ($http, toaster) {
     };
  
     var _getUserPlaces = function (userName, pageIndex, pageSize) {
- 
+    	debugger;
+    	userName = "ajil";
         return $http.get(serviceBase + userName, { params: { page: pageIndex, pageSize: pageSize } }).then(function (results) {
             return results;
         });

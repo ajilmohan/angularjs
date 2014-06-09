@@ -1,9 +1,11 @@
 package in.spa.angular.jpa.test;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import in.spa.angulr.domain.Bookmark;
 import in.spa.angulr.repo.BookmarkRepo;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:applicationContext-test.xml" })
-@Transactional
-@Ignore
+//@Ignore
 public class BookmarkRepoTest {
 	
 	@Autowired
@@ -23,14 +24,26 @@ public class BookmarkRepoTest {
 	
 	@Test
 	@Transactional
-	@Rollback
+	@Rollback(false)
 	public void testInsert(){
 		Bookmark bk  = new Bookmark();
 		System.out.println("test run");
 		
-		bk.setUserName("test");
+		bk.setUserName("ajil");
+		bk.setAddress("koramangala");
+		bk.setCategorys("fashion");
+		bk.setRating(8);
+		Date date = new Date();
+		bk.setTs(new Timestamp(date.getTime()));
+		bk.setVennueId("VN001");
+		bk.setVennueName("Bangalore");
 		
-		bookmarkRepo.save(bk);
+		try {
+			bookmarkRepo.save(bk);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

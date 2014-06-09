@@ -15,10 +15,9 @@ app.controller('myPlacesController', function ($scope, placesDataService) {
     }
 
     function getUserPlaces() {
-
         var userInCtx = placesDataService.getUserInContext();
 
-        if (userInCtx) {
+        if (true) {
 
             placesDataService.getUserPlaces(userInCtx, $scope.currentPage - 1, $scope.pageSize).then(function (results) {
 
